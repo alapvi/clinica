@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_clinica_paciente,clinica.paciente,model_clinica_paciente,clinica.clinica_group_adm,1,0,0,0
-access_clinica_paciente_facult,clinica.paciente,model_clinica_paciente,clinica.clinica_group_facult,1,1,1,1
+access_clinica_paciente,clinica.paciente,model_clinica_paciente,,1,0,0,0
+access_clinica_paciente_facult,clinica.paciente,model_clinica_paciente,,1,1,1,1
 access_clinica_historial,clinica.historial,model_clinica_historial,,1,1,1,1
 access_clinica_stock,clinica.stock,model_clinica_stock,,1,1,1,1

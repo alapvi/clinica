@@ -24,7 +24,7 @@
         <form>
           <header>
             <!-- Botones aquí -->
-            <button name="eliminaHistorial" type="object" string="Elimina Historial" confirm="Está seguro de eliminar el historial del paciente?" class="oe_highlight" groups="clinica.clinica_group_facult"/>
+            <button name="eliminaHistorial" type="object" string="Elimina Historial" confirm="Está seguro de eliminar el historial del paciente?" class="oe_highlight" />
           </header>
           <sheet>              
               <group string="Datos Personales" col="2">
@@ -45,9 +45,7 @@
                 
               </group>
               <group colspan="2">
-                <notebook>
-                  <page string="Historial de Visitas" >
-                    <field name="historial_ids" context="{'default_paciente_id':id}" groups="clinica.clinica_group_facult">
+                    <field name="historial_ids"  >
                       <tree>
                         <!-- <field name="id_visita" attrs="{'invisible':True}"/> -->
                         <!--context="{'default_paciente_id':name}" <field name="paciente_id" domain="[('id','=',parent.dni)]"/>  -->
@@ -57,8 +55,7 @@
                       </tree>
 
                     </field>
-                  </page>
-                </notebook>
+                
               </group>
               
           </sheet>

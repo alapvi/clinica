@@ -21,22 +21,19 @@ class Paciente(models.Model):
     visitas = fields.Integer(compute='num_visitas', store=True)
     #numVisitas = fields.Integer(string="Visitas",readonly=True)
 
-    @api.one    
     def eliminaHistorial(self):
+        self.ensure_one()
         _logger.info("Eliminando Historial: "+str(self.historial_ids))
         for rec in self.historial_ids:
             _logger.info("Eliminando: " + str(rec))
             rec.unlink()
         return True
     
-    
-    @api.one
     @api.depends('historial_ids')
     def num_visitas(self):
         _logger.info("Historial: "+str(len(self.historial_ids)))
         self.visitas = len(self.historial_ids)
-        return len(self.historial_ids)
-
+    
     @api.constrains('dni')
     def validate_dni(self):
         if not self.check_DNI(self.dni):

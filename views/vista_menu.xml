@@ -13,9 +13,9 @@
     <!-- actions -->
     
     <menuitem name="Pacientes" id="clinica.pacientes_list" parent="clinica.pacientes_menuitem"
-              action="clinica.action_window_pacientes" groups="clinica.clinica_group_adm"/>
+              action="clinica.action_window_pacientes" />
     <menuitem name="Historial" id="clinica.historial_list" parent="clinica.pacientes_menuitem"
-              action="clinica.historial_action_window" groups="clinica.clinica_group_facult"/>
+              action="clinica.historial_action_window" />
     <menuitem name="Listado" id="clinica.stock_list" parent="clinica.stock_menuitem"
               action="clinica.action_window_stock"/>
      
