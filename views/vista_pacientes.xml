@@ -1,0 +1,97 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="clinica.list_paciente">
+      <field name="name">Listado de Pacientes</field>
+      <field name="model">clinica.paciente</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="dni"/>
+          <field name="name"/>
+          <field name="apellidos"/>
+          <field name="telf"/>
+          <field name="fechaNac"/>
+          <field name="email"/>
+        </tree>
+      </field>
+    </record>
+
+  <record model="ir.ui.view" id="clinica.form_paciente">
+      <field name="name">Formulario de Pacientes</field>
+      <field name="model">clinica.paciente</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <!-- Botones aquí -->
+            <button name="eliminaHistorial" type="object" string="Elimina Historial" confirm="Está seguro de eliminar el historial del paciente?" class="oe_highlight" groups="clinica.clinica_group_facult"/>
+          </header>
+          <sheet>              
+              <group string="Datos Personales" col="2">
+                
+                <group>
+                  <label for="dni" class="oe_edit_only"/> 
+                  <h1><field name="dni"/></h1> 
+                  <field name="name"/>
+                  <field name="apellidos"/>
+                  <field name="telf"/>
+                  <field name="fechaNac"/>
+                  <field name="email"/>
+                  <field name="visitas" readonly="1"/>
+                </group>
+                <group string="Foto">
+                  <field name="foto" widget="image"/>
+                </group>
+                
+              </group>
+              <group colspan="2">
+                <notebook>
+                  <page string="Historial de Visitas" >
+                    <field name="historial_ids" context="{'default_paciente_id':id}" groups="clinica.clinica_group_facult">
+                      <tree>
+                        <!-- <field name="id_visita" attrs="{'invisible':True}"/> -->
+                        <!--context="{'default_paciente_id':name}" <field name="paciente_id" domain="[('id','=',parent.dni)]"/>  -->
+                        <!-- <field name="paciente_id"/>-->
+                        <field name="fecha" default_fecha="datetime.now()"/>
+                        <field name="detalle" widget="html"/>
+                      </tree>
+
+                    </field>
+                  </page>
+                </notebook>
+              </group>
+              
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+   
+    <record model="ir.actions.act_window" id="clinica.action_window_pacientes">
+      <field name="name">Listado Pacientes</field>
+      <field name="res_model">clinica.paciente</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+   
+   
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="clinica.action_server">
+      <field name="name">clinica server</field>
+      <field name="model_id" ref="model_clinica_clinica"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    
+    
+  </data>
+</odoo>

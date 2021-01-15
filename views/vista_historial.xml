@@ -1,0 +1,83 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="clinica.list_pacientes">
+      <field name="name">clinica list</field>
+      <field name="model">clinica.historial</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="paciente_id"/>
+          <field name="fecha"/>
+          <field name="detalle"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="clinica.calendar_pacientes">
+      <field name="name">Calendario de Visitas</field>
+      <field name="model">clinica.historial</field>
+      <field name="arch" type="xml">
+        <calendar date_start="fecha" color="paciente_id" event_open_popup="True" mode="month" form_view_id="clinica.form_pacientes" quick_add="False">
+          <field name="paciente_id"/>
+          <field name="fecha"/>
+        </calendar>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="clinica.form_pacientes">
+      <field name="name">clinica list</field>
+      <field name="model">clinica.historial</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="paciente_id"/>
+              <field name="fecha"/>
+              <field name="detalle"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="clinica.historial_action_window">
+      <field name="name">historial window</field>
+      <field name="res_model">clinica.historial</field>
+      <field name="view_mode">tree,form,calendar</field>
+    </record>
+    
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="clinica.action_server">
+      <field name="name">clinica server</field>
+      <field name="model_id" ref="model_clinica_clinica"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    
+    <!-- <menuitem name="clinica" id="clinica.menu_root"/> -->
+    
+    <!-- menu categories -->
+    
+    <!-- <menuitem name="Historial" id="clinica.historial" parent="clinica.menu_root"/> -->
+    
+    <!-- actions -->
+    <!--
+    <menuitem name="Historial" id="clinica.historial_list" parent="clinica.historial"
+              action="clinica.historial_action_window"/>
+    -->
+   
+  </data>
+</odoo>

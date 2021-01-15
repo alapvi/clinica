@@ -1,0 +1,20 @@
+<odoo>
+    <record id="module_clinica_category" model="ir.module.category">
+        <field name="name">Clinica</field>
+    </record>
+    <!-- Clinica User Group -->
+    <record id="clinica_group_adm" model="res.groups">
+        <field name="name">Administrativo</field>
+        <field name="category_id" ref="module_clinica_category"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+    <!-- Clinica Factultativo Group -->
+    <record id="clinica_group_facult" model="res.groups">
+        <field name="name">Facultativo</field>
+        <field name="category_id" ref="module_clinica_category"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    
+
+</odoo>
